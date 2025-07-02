@@ -5,8 +5,8 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "moduleResolution": "node",  // ← これが必要なことが多い
-    "baseUrl": ".",              // 相対パスのベース
+    "moduleResolution": "node", // ← これが必要なことが多い
+    "baseUrl": ".", // 相対パスのベース
     "paths": {
       "*": ["src/*"]
     }
