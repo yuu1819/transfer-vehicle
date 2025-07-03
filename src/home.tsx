@@ -15,7 +15,7 @@ const Home: React.FC = () => {
   const [edges, setEdges] = useState<Edge[]>([]);
 
   useEffect(() => {
-    fetch('/stations.json')
+    fetch('/transfer-vehicle/public/stations.json')
       .then((res) => res.json())
       .then((data: Station[]) => {
         setStations(data);
@@ -73,7 +73,7 @@ const Home: React.FC = () => {
         zoomOnScroll={false} // 拡大・縮小（ホイールズーム）無効
         zoomOnPinch={false} // ピンチズーム無効
         zoomOnDoubleClick={false} // ダブルクリックズーム無効
-        panOnDrag={false} // パン（ドラッグ移動）無効
+        // panOnDrag={false} // パン（ドラッグ移動）無効
         panOnScroll={false} // スクロールでパンも無効
       >
         <Background />
