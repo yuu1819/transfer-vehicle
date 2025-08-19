@@ -10,7 +10,7 @@ const Home: React.FC = () => {
   const [stations, setStations] = useState<Station[]>([]);
 
   useEffect(() => {
-    fetch('/stations.json')
+    fetch('stations.json')
       .then((res) => res.json())
       .then((data) => setStations(data));
   }, []);

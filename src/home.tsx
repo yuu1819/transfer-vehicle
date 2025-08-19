@@ -15,7 +15,7 @@ const Home: React.FC = () => {
   const [edges, setEdges] = useState<Edge[]>([]);
 
   useEffect(() => {
-    fetch('/transfer-vehicle/public/stations.json')
+    fetch('stations.json')
       .then((res) => res.json())
       .then((data: Station[]) => {
         setStations(data);
