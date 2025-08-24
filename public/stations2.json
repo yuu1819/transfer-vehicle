@@ -1,0 +1,14 @@
+{
+  "line": "都営新宿線",
+  "stations": [
+    {
+      "name": "新宿",
+      "exit": [
+        { "CarNo": 1, "ExitNo": 1 },
+        { "CarNo": 3, "ExitNo": 2 }
+      ],
+      "equipments": [],
+      "transfers": []
+    }
+  ]
+}

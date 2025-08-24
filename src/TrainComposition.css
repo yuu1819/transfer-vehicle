@@ -1,0 +1,38 @@
+/* TrainComposition.css */
+.train {
+  display: flex;
+  gap: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  background: #f0f0f0;
+}
+
+.car {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  background: #ffffff;
+  border: 2px solid #333;
+  border-radius: 8px;
+  min-width: 80px;
+}
+
+.car-number {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.doors {
+  display: flex;
+  gap: 4px;
+}
+
+.door {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}

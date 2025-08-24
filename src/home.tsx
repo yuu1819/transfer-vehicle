@@ -4,24 +4,38 @@ import { Link } from 'react-router-dom';
 import ReactFlow, { Background, Controls } from 'reactflow';
 import type { Node, Edge } from 'reactflow';
 
-type Station = {
+type exitInfo = {
+  CarNo: number;
+  ExitNo: number;
+};
+
+export type Station = {
   name: string;
+  exit: exitInfo[];
+  equipments: number[];
+  transfers: number[];
+};
+
+export type Line = {
   line: string;
+  stations: Station[];
 };
 
 const Home: React.FC = () => {
-  const [, setStations] = useState<Station[]>([]);
+  // todo 初期値はどうするか
+  const [stations, setStations] = useState<Line>({ line: '', stations: [] });
   const [nodes, setNodes] = useState<Node[]>([]);
   const [edges, setEdges] = useState<Edge[]>([]);
 
   useEffect(() => {
-    fetch('stations.json')
+    fetch('/stations2.json')
       .then((res) => res.json())
-      .then((data: Station[]) => {
+      .then((data: Line) => {
+        console.log('data:', data);
         setStations(data);
 
         // 駅ノードを左から右に並べる
-        const newNodes = data.map(
+        const newNodes = data.stations.map(
           (station, index) =>
             ({
               id: station.name,
@@ -51,9 +65,9 @@ const Home: React.FC = () => {
         );
 
         // 駅を順番につなぐ線（エッジ）を作成
-        const newEdges = data.slice(1).map((station, index) => ({
-          id: `e${data[index].name}-${station.name}`,
-          source: data[index].name,
+        const newEdges = data.stations.slice(1).map((station, index) => ({
+          id: `e${data.stations[index].name}-${station.name}`,
+          source: data.stations[index].name,
           target: station.name,
           type: 'smoothstep',
         }));
@@ -61,11 +75,14 @@ const Home: React.FC = () => {
         setNodes(newNodes);
         setEdges(newEdges);
       });
+    // todo 同期処理
+    // console.log('stations:', stations);
   }, []);
 
+  console.log('stations:', stations);
   return (
     <div style={{ height: '400px' }}>
-      <h1>路線図</h1>
+      <h1>{stations.line}</h1>
       <ReactFlow
         nodes={nodes}
         edges={edges}
